@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Github profiles</title>
+    <link href='github.css' rel='stylesheet'>
+  </head>
+  <body>
+    <form id='add_profile'>
+      <input id='username' placeholder='Enter a Github username'>
+      <button type='submit'>Load profile</button>
+    </form>
+
+    <div class='profile-container'>
+
+      <script type='text/template' id='profile-template'>
+        <div class="profile">
+          <div class="left">
+            <img src="{{ avatar_url }}">
+          </div>
+
+          <div class="right">
+            <h3>
+              <a href="{{ html_url }}">
+                {{ login }}
+              </a>
+            </h3>
+            <h4>Repos: {{ public_repos }}</h4>
+            <h4>Followers: {{ followers }}</h4>
+          </div>
+          <br clear="all">
+        </div>
+      </script>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-2.0.3.min.js'></script>
+    <script src='mustache.js'></script>
+    <script>
+      function addUser(username) {
+        var url = 'https://api.github.com/users/' + username;
+        $.get(url, function(user) {
+          var newProfile = Mustache.render($('#profile-template').html(), user)
+
+          $(newProfile).prependTo('.profile-container').hide().slideDown('slow');
+        });
+      }
+
+      $(document).ready(function(){
+        var users = ['alexmakers', 'nkeszler', 'tomgroombridge', 'chrishill627'];
+
+        users.forEach(function(username) {
+          addUser(username);
+        })
+
+        $('#add_profile').on('submit', function(event) {
+          event.preventDefault();
+          addUser($('#username').val());
+        })
+
+      })
+    </script>
+  </body>
+</html>
