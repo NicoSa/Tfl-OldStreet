@@ -2,6 +2,7 @@
   <head>
     <title>Github profiles</title>
     <link href='github.css' rel='stylesheet'>
+    <meta charset='utf-8'>
   </head>
   <body>
     <form id='add_profile'>
@@ -26,6 +27,9 @@
             <h4>Repos: {{ public_repos }}</h4>
             <h4>Followers: {{ followers }}</h4>
           </div>
+
+          <a class='close' href='#'>✖</a>
+
           <br clear="all">
         </div>
       </script>
@@ -37,9 +41,14 @@
       function addUser(username) {
         var url = 'https://api.github.com/users/' + username;
         $.get(url, function(user) {
+          console.log('Adding a user');
           var newProfile = Mustache.render($('#profile-template').html(), user)
 
           $(newProfile).prependTo('.profile-container').hide().slideDown('slow');
+        }).fail(function() {
+          alert("Username not found");
+        }).always(function() {
+          $('#username').val('')
         });
       }
 
@@ -48,13 +57,22 @@
 
         users.forEach(function(username) {
           addUser(username);
-        })
+        });
 
         $('#add_profile').on('submit', function(event) {
           event.preventDefault();
           addUser($('#username').val());
-        })
+        });
 
+        console.log('Add the on click event')
+        console.log($('.close').length)
+
+        $('.profile-container').on('click', '.close', function(event) {
+          event.preventDefault();
+          $(this).parent().slideUp('slow', function() {
+            $(this).remove();
+          });
+        });
       })
     </script>
   </body>

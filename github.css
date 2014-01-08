@@ -7,6 +7,10 @@ input {
   width: 510px;
 }
 
+a {
+  color: #fff;
+}
+
 .profile {
   background: #606c88; /* Old browsers */
   background: -moz-linear-gradient(top,  #606c88 0%, #3f4c6b 100%); /* FF3.6+ */
@@ -22,6 +26,7 @@ input {
   border-radius: 15px;
   color: #fff;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .profile .left {
@@ -38,6 +43,18 @@ input {
 .profile .right h3 {
   margin-top: 0;
 }
+
 .profile img {
   width: 100%;
+}
+
+.profile .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  text-decoration: none;
+}
+
+.profile .close:hover {
+  color: #000;
 }
