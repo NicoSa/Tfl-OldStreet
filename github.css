@@ -20,7 +20,7 @@ a {
   background: -ms-linear-gradient(top,  #606c88 0%,#3f4c6b 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #606c88 0%,#3f4c6b 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
-  width: 600px;
+  width: 60%;
   padding: 20px 20px 10px 20px;
   font-family: Helvetica Neue;
   border-radius: 15px;
@@ -30,18 +30,32 @@ a {
 }
 
 .profile .left {
-  width: 110px;
+  width: 20%;
   float: left;
 }
 
 .profile .right {
-  width: 450px;
+  width: 80%;
   float: left;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .profile .right h3 {
   margin-top: 0;
+  font-size: 3vw;
+}
+
+@media(max-width: 500px) {
+  .profile .left, .profile .right {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .profile .right h3 {
+    font-size: 20px;
+  }
+
 }
 
 .profile img {

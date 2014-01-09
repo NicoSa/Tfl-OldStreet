@@ -6,7 +6,7 @@
   </head>
   <body>
     <form id='add_profile'>
-      <input id='username' placeholder='Enter a Github username'>
+      <input id='username' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='Enter a Github username'>
       <button type='submit'>Load profile</button>
     </form>
 
@@ -73,6 +73,10 @@
             $(this).remove();
           });
         });
+
+        $(window).on('resize', function() {
+          $('h3').css({color: 'white'});
+        })
       })
     </script>
   </body>
