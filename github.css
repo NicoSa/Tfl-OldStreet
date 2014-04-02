@@ -27,6 +27,7 @@ a {
   color: #fff;
   margin-bottom: 20px;
   position: relative;
+  display: none;
 }
 
 .profile .left {
@@ -70,4 +71,15 @@ a {
 
 .profile .close:hover {
   color: #000;
+}
+
+.profile {
+  transition: all 1s;
+}
+.profile:hover {
+  margin-left: 100px;
+}
+
+template {
+  display: none;
 }

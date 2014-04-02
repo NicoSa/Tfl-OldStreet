@@ -38,16 +38,34 @@
     <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
     <script src='mustache.js'></script>
     <script>
-      $(document).ready(function(){ 
+      function addProfileFromUsername(username) {
+        $.get('https://api.github.com/users/' + username, function(user) {
+          var newProfile = Mustache.render($('#profile-template').html(), user);
+          $(newProfile).prependTo('.profile-container').slideDown();
+        }).fail(function() {
+          alert("We couldn't fetch that user's data.")
+        }).always(function(){
+          $('#username').val('');
+        })
+      }
+
+      $(document).ready(function(){
+        var usernames = ['alexmakers', 'ecomba', 'ajcumine', 'SarahYoung'];
+
+        usernames.forEach(function(username){
+          addProfileFromUsername(username);
+        });
+
+        $('.profile-container').on('click', '.close', function() {
+          $(this).parent().remove();
+        })
+
         $('#add_profile').on('submit', function(event) {
           event.preventDefault();
           var usernameEntered = $('#username').val();
+          addProfileFromUsername(usernameEntered);
+        });
 
-          $.get('https://api.github.com/users/' + usernameEntered, function(user) {
-            var newProfile = Mustache.render($('#profile-template').html(), user);
-            $('.profile-container').append(newProfile);
-          })
-        })
       })
     </script>
   </body>
