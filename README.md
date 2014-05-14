@@ -2,7 +2,7 @@ TFL - Old Street Arrivals
 ===
 We created an app that checks the arrivals at Old Street Underground Station, London from the Traffic for London live data stream.
 
-![](oldstreetarrivalapp.png)
+![](public/oldstreetarrivalapp.png)
 
 Objectives of exercise
 ----
