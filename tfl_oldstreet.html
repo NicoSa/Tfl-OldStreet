@@ -9,7 +9,7 @@
       <input id='username' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='Enter a Github username'>
       <button type='submit'>Load profile</button>
     </form>
-
+    <
       <div class='profile-container'>
 
         <template id='profile-template'>
@@ -35,23 +35,24 @@
         </template>
       </div>
  -->
-    <template>
+      var output = Mustache.render("{{title}} spends {{calc}}", view);    <template>
       <div id="arrival-template">
         <div class="arrival">
         {{ [0]timeToStation }}
         </div>
       </div>
     </template>
+            <div id="debug"></div>
+
     <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
     <script src='http://underscorejs.org/underscore-min.js'></script>
     <script src='mustache.js'></script>
     <script>
-      function displayLineInformation(northern) {
-        $.get('http://api.tfl.gov.uk/Line/%7Bids%7D/Arrivals/%7BstopPointId%7D?stopPointId=940GZZLUODS&ids=northern&app_id=ec132f19&app_key=19ed8e8b2f6ec021a9dd00f97ebd0d6e', function(arrivals) {
-          var status = Mustache.render($('#arrival-template').html(), arrivals);
-            $(status).prependTo('.arrival');
+      var ourArrivals = $.get('http://api.tfl.gov.uk/Line/%7Bids%7D/Arrivals/%7BstopPointId%7D?stopPointId=940GZZLUODS&ids=northern&app_id=ec132f19&app_key=19ed8e8b2f6ec021a9dd00f97ebd0d6e', function(trains){
+          trains.forEach(function(train){
+              $('#debug').text(JSON.stringify(train));
           });
-      }
+      })
       // function addProfileFromUsername(username) {
       //   $.get('https://api.github.com/users/' + username, function(user) {
       //     var newProfile = Mustache.render($('#profile-template').html(), user);
