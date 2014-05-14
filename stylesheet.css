@@ -1,0 +1,32 @@
+#data {
+  font-family:"Verdana", Verdana, sans-serif;
+  color: black;
+  margin: 2px;
+  display: inline-block;
+  background-color: white;
+  padding: 8px;
+  border-radius: 4px;
+  width: 55%;
+  margin-left: 20%;
+  margin-right: 20%;
+  opacity: 0.75;
+
+}
+
+
+
+h1 {
+  font-family:"Verdana", Verdana, sans-serif;
+  color: black;
+  text-align: center;
+  background-color: white;
+  padding: 12px;
+  border-radius: 4px;
+  margin-right: 15%;
+  margin-left: 15%;
+  opacity: 0.75;
+}
+
+body {
+  background:
+}

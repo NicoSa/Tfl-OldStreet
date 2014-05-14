@@ -1,18 +1,26 @@
 <html>
   <head>
     <title>Tfl Old Street Arrivals</title>
-    <link href='github.css' rel='stylesheet'>
+    <link href='stylesheet.css' rel='stylesheet' type="text/css">
     <meta charset='utf-8'>
   </head>
-  <body>  
+  <body background="Old-Street-013.jpg">
+      <h1>Old Street Arrivals</h1>
+
       <template id="train-template">
       <ul>
+      
       {{#trains}}
-        <li>
-          <h4>timeToStation: {{ timeToStation }}</h4>
-          <h4>towards: {{ towards }}</h4>
-        </li>
+        <table>
+        <div id="data">
+          <h4>Platform: {{ platformName }} </h4> 
+          <h4>Arrives in: {{ timeToStation }}s </h4>
+          <h4> Towards: {{ towards }} </h4>
+          <h4>Destination: {{ destinationName }}</h4>
+        </div>
+        
         {{/trains}}
+        </table>
         </ul>
       </template>
       <div id='livedepartures'>
