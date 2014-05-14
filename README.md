@@ -1,6 +1,6 @@
 TFL - Old Street Arrivals 
 ===
-We created an app that checks the arrivals at Old Street Underground Station, London from the Traffic for London live data stream.
+We created an app that checks the arrivals at Old Street Underground Station, London from the Traffic for London live data stream. It updates itself every 10 seconds, however the TFL API is slower most of the time.
 
 ![](public/oldstreetarrivalapp.png)
 
