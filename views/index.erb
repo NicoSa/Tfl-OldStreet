@@ -1,0 +1,58 @@
+  <head>
+    <title>Tfl Old Street Arrivals</title>
+    <link href='stylesheet.css' rel='stylesheet' type="text/css">
+    <meta charset='utf-8'>
+  </head>
+  <body background="Old-Street-013.jpg">
+      <h1>Old Street Arrivals</h1>
+
+      <template id="train-template">
+      <ul>
+      
+      {{#trains}}
+        <table>
+        <div id="data">
+          <h4>Platform: {{ platformName }} </h4> 
+          <h4>Arrives in: {{ timeToStation }}s </h4>
+          <h4> Towards: {{ towards }} </h4>
+          <h4>Destination: {{ destinationName }}</h4>
+        </div>
+        
+        {{/trains}}
+        </table>
+        </ul>
+      </template>
+      <div id='livedepartures'>
+
+      </div>
+
+    <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
+    <script src='mustache.js'></script>
+    <script>
+    //function called ready that takes a callback. Ready means everything is ready to be loaded with data.
+      $(document).ready(getTrains);
+    //function takes a callback and delaytime, restarts given method every 10 seconds
+      setInterval(getTrains, 10000);
+
+      function getTrains() { 
+        //get creates a javascript object(hash!)
+          $.get('http://api.tfl.gov.uk/Line/%7Bids%7D/Arrivals/%7BstopPointId%7D?stopPointId=940GZZLUODS&ids=northern&app_id=ec132f19&app_key=19ed8e8b2f6ec021a9dd00f97ebd0d6e', function(trains){
+            //trains is our Javascript object, the foreach method calls the callback for each element in the array
+              var newTrain = Mustache.render($('#train-template').html(), {trains: trains});
+              $('#livedepartures').html(newTrain);
+          })
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+ <!--          trains.forEach(function(train){
+              $('#debug').prepend(JSON.stringify(train));
+          });
+      })
