@@ -30,3 +30,7 @@ h1 {
 body {
   background:
 }
+
+#train-template {
+  display: none;
+}
